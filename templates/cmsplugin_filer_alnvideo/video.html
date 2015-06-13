@@ -1,0 +1,20 @@
+{% load sekizai_tags %}
+<div class="embed-responsive embed-responsive-{{ object.movie_ratio }}">
+{% if object.movie_url %}
+	<iframe width="{{ object.width }}" height="{{ object.height }}" class="embed-responsive-item" src="{{ object.movie_url }}"></iframe>
+{% else %}
+	{% addtoblock "css" %}
+	<link rel="stylesheet" href="{{ STATIC_URL }}cmsplugin_filer_alnvideo/css/video-js.css" />
+	{% endaddtoblock %}
+	{% addtoblock "js" %}
+	<script type="text/javascript" src="{{ STATIC_URL }}cmsplugin_filer_alnvideo/js/video.js"></script>
+	{% endaddtoblock %}
+	<video id="videojs_plugin_{{ object.pk }}" class="video-js vjs-default-skin embed-responsive-item" controls
+		   preload="auto" width="{{ object.width }}" height="{{ object.height }}" poster="{{ object.image.url }}"
+		   data-setup="{}">
+		{% for format, url in formats.items %}
+			<source src="{{ url }}" type='{{ format }}'>
+		{% endfor %}
+	</video>
+{% endif %}
+</div>
