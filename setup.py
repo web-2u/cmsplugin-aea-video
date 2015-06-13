@@ -15,7 +15,7 @@ def read(fname):
 setup(
     name = "cmsplugin-aea-video",
     version = "0.1",
-    url = 'https://github.com/piquadrat/cmsplugin-filer-html5video',
+    url = 'https://github.com/web-2u/cmsplugin-aea-video',
     license = 'BSD',
     description = "video plugin for django-cms v.3.1 and django-filer, using VideoJS",
     long_description = read('README.rst'),
